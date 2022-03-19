@@ -12,6 +12,9 @@ def main(argv):
     X = pd.read_csv(argv[1])
     y = pd.read_csv(argv[2])
 
+    print(X)
+    print(y)
+
     model = KNNClassifier(int(argv[3])).fit(X, y)
 
     while True:

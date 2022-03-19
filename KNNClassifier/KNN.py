@@ -24,11 +24,11 @@ class KNNClassifier:
             self.k = int(math.sqrt(len(X)))
 
         self.dim = len(X.columns)
-        X.reset_index(inplace=True, drop=True)
-        X['index'] = X.index
+        self.X.reset_index(inplace=True, drop=True)
+        self.X['index'] = self.X.index
 
-        self.X_np = X.to_numpy()
-        self.y_np = y.to_numpy()
+        self.X_np = self.X.to_numpy()
+        self.y_np = self.y.to_numpy()
 
         return self
 

@@ -25,7 +25,7 @@ def iris_test():
     y_train = np.array(list(map(lambda x: mapping[x], y_train)))
     y_test = np.array(list(map(lambda x: mapping[x], y_test)))
 
-    perceptron = PerceptronClassifier().fit(X_train, y_train, 0.01)
+    perceptron = PerceptronClassifier().fit(X_train, y_train, 0.01, epochs=1000)
     print(("Train accuracy: " + str(sum(perceptron.predict(X_train) == y_train) / len(y_train))))
 
     pred = perceptron.predict(X_test)

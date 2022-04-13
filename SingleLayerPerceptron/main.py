@@ -28,12 +28,13 @@ def train():
     return model, labels
 
 
-def gui(model, labels):
+def cli(model, labels):
     text = input("Paste text to classify: ")
     text = prepare_text(text, is_path=False)
     print(labels[model.predict(text)[0]])
 
+
 if __name__ == "__main__":
     model, labels = train()
     while True:
-        gui(model, labels)
+        cli(model, labels)

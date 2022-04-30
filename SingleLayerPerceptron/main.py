@@ -31,10 +31,12 @@ def train():
 def cli(model, labels):
     text = input("Paste text to classify: ")
     text = prepare_text(text, is_path=False)
-    print(labels[model.predict(text)[0]])
+    result = model.predict((text))
+    print(labels[np.argmax(result[0])], result[0])
 
 
 if __name__ == "__main__":
     model, labels = train()
+    print(labels)
     while True:
         cli(model, labels)

@@ -3,7 +3,6 @@ import string
 
 
 def prepare_text(path, is_path=True):
-    texts = None
     if is_path:
         with open(path) as file:
             texts = file.read().split("\n\n\n")
@@ -27,4 +26,3 @@ def prepare_text(path, is_path=True):
         texts_dict.append(alphabet_tmp)
 
     return [list(x.values()) for x in texts_dict]
-

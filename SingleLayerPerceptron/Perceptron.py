@@ -28,8 +28,8 @@ class PerceptronClassifier:
             self.X, self.y = zip(*shuffle)
 
             for i in range(self.m):
-                self.weights = self.weights + (self.y[i] - self._predict(self.X[i])) * self.learning_rate * self.X[i]
-                self.theta = self.theta - (self.y[i] - self._predict(self.X[i])) * self.learning_rate
+                self.weights = self.weights + (self.y[i] - self._predict_theta(self.X[i])) * self.learning_rate * self.X[i]
+                self.theta = self.theta - (self.y[i] - self._predict_theta(self.X[i])) * self.learning_rate
 
         return self
 
@@ -39,7 +39,7 @@ class PerceptronClassifier:
     def _predict(self, vector):
         return np.dot(vector, self.weights)
 
-    def _predict_binary(self, vector):
+    def _predict_theta(self, vector):
         if np.dot(vector, self.weights) >= self.theta:
             return 1
         else:

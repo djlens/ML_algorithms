@@ -24,7 +24,7 @@ class PerceptronClassifier:
 
         self.weights = [np.random.rand() for x in range(self.n)]
 
-        for i in range(1000):
+        for i in range(epochs):
             shuffle = list(zip(self.X, self.y))
             random.shuffle(shuffle)
             self.X, self.y = zip(*shuffle)
@@ -39,7 +39,6 @@ class PerceptronClassifier:
         return np.array([self._predict(v) for v in test_set])
 
     def _predict(self, vector):
-        # print(np.dot(vector, self.weights), self.theta)
         if np.dot(vector, self.weights) >= self.theta:
             return 1
         else:

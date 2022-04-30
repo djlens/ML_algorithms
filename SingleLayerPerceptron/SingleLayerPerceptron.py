@@ -11,7 +11,6 @@ class SingleLayerPerceptron:
     def fit(self, X, y, number_of_classes):
         self.train = (list(zip(X, y)))
         self.train = np.array([np.append(x[0], x[1]) for x in self.train])
-        self.perceptrons = []
 
         for k in range(number_of_classes):
             train_tmp = np.array(list(map(lambda row: binary_labels(row, k), self.train)))
@@ -19,7 +18,6 @@ class SingleLayerPerceptron:
             y = train_tmp[:, -1]
             model = PerceptronClassifier().fit(X, y, 0.01)
             self.perceptrons.append(model)
-
         return self
 
     def predict(self, test_set):
@@ -29,7 +27,7 @@ class SingleLayerPerceptron:
             for model in self.perceptrons:
                 _result.append(model.predict([vect])[0])
             result.append(_result)
-        return [np.argmax(x) for x in result]
+        return result
 
 
 def binary_labels(row, k):

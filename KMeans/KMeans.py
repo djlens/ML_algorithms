@@ -1,4 +1,3 @@
-import math
 
 import numpy as np
 
@@ -49,10 +48,12 @@ class KMeans:
                 self._compute_centroids()
 
             self.wcss_.append(self.loss)
+            # print(self.loss)
+            # print(self.y_[self._iter])
 
         self.wcss = min(self.wcss_)
-        self.y = self.y_[np.argmax(self.wcss_)]
-        self.centroids = self.centroids_[np.argmax(self.wcss_)]
+        self.y = self.y_[np.argmin(self.wcss_)]
+        self.centroids = self.centroids_[np.argmin(self.wcss_)]
 
         return self
 

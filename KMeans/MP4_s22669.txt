@@ -1,3 +1,5 @@
+# Means
+
 import numpy as np
 
 
@@ -47,6 +49,8 @@ class KMeans:
                 self._compute_centroids()
 
             self.wcss_.append(self.loss)
+            # print(self.loss)
+            # print(self.y_[self._iter])
 
         self.wcss = min(self.wcss_)
         self.y = self.y_[np.argmin(self.wcss_)]
@@ -74,3 +78,25 @@ class KMeans:
             self.centroids_[self._iter][index] = new_centroid
             self.loss += calculate_distances_within_cluster(cluster, new_centroid)
 
+
+
+# test
+
+import numpy as np
+from KMeans import KMeans
+from sklearn.cluster import KMeans as KMeansSK
+
+
+def test():
+    wines = np.genfromtxt('./data/wine-clustering.csv', delimiter=',', skip_header=True)
+    model = KMeans(n_clusters=5).fit(wines)
+    model2 = KMeansSK(n_clusters=5).fit(wines)
+    print(model.wcss)
+    print(model.y)
+    print("------")
+    print(model2.inertia_)
+    print(model2.labels_)
+
+
+if __name__ == "__main__":
+    test()
